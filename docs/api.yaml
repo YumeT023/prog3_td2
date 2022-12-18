@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: football
+  description: football
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /matches:
+    get:
+      tags:
+        - Matches
+      operationId: getMatches
+      summary: get all matches
+      responses:
+        200:
+          description: all the matches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamAgainstResponse'
+
+
+components:
+  schemas:
+    TeamAgainstResponse:
+      type: object
+      properties:
+        firstTeam:
+          $ref: '#/components/schemas/TeamResponse'
+        secondTeam:
+          $ref: "#/components/schemas/TeamResponse"
+        datetime:
+          type: string
+          format: date
+    PlayerResponse:
+      allOf:
+        - $ref: '#/components/schemas/Record'
+      properties:
+        name:
+          type: string
+    Sponsor:
+      allOf:
+        - $ref: '#/components/schemas/Record'
+      properties:
+        name:
+          type: string
+    Team:
+      allOf:
+        - $ref: '#/components/schemas/Record'
+      properties:
+        name:
+          type: string
+
+    TeamResponse:
+      allOf:
+        - $ref: '#/components/schemas/Team'
+      properties:
+        players:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlayerResponse'
+        sponsors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sponsor'
+    Record:
+      type: object
+      properties:
+        id:
+          type: number
+
