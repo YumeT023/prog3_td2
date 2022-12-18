@@ -20,13 +20,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TeamAgainstResponse'
-
-
+                  $ref: '#/components/schemas/MatchResponse'
 components:
   schemas:
-    TeamAgainstResponse:
-      type: object
+    MatchResponse:
+      allOf:
+        - $ref: '#/components/schemas/Record'
       properties:
         firstTeam:
           $ref: '#/components/schemas/TeamResponse'
@@ -71,4 +70,3 @@ components:
       properties:
         id:
           type: number
-
