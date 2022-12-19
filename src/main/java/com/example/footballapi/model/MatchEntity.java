@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,11 +34,11 @@ public class MatchEntity {
     @Column(nullable = false)
     private String stadium;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "team1_id")
-    private TeamEntity firstTeam;
+    private TeamEntity teamA;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "team2_id")
-    private TeamEntity secondTeam;
+    private TeamEntity teamB;
 }
