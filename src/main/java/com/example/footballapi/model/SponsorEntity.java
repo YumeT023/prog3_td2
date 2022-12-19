@@ -31,11 +31,4 @@ public class SponsorEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "team_have_sponsor",
-            joinColumns = @JoinColumn(name = "team_id"),
-            inverseJoinColumns = @JoinColumn(name = "sponsor_id")
-    )
-    private List<TeamEntity> team;
 }
