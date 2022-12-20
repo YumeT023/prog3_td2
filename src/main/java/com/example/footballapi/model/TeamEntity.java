@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,4 +40,9 @@ public class TeamEntity {
             inverseJoinColumns = @JoinColumn(name = "sponsor_id")
     )
     private List<SponsorEntity> sponsors;
+
+    @OneToMany
+    @JoinColumn(name = "team_id")
+    @OrderBy("number")
+    private List<PlayerEntity> players;
 }
