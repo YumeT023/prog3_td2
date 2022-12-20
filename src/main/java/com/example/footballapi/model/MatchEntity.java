@@ -35,10 +35,10 @@ public class MatchEntity {
     private String stadium;
 
     @ManyToOne
-    @JoinColumn(name = "team1_id")
+    @JoinColumn(name = "team_a_id")
     private TeamEntity teamA;
 
     @ManyToOne
-    @JoinColumn(name = "team2_id")
+    @JoinColumn(name = "team_b_id")
     private TeamEntity teamB;
 }

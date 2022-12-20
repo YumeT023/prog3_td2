@@ -14,8 +14,8 @@ public class MatchRestMapper {
         return MatchResponse.builder()
                 .id(domain.getId())
                 .datetime(domain.getDatetime())
-                .firstTeam(teamRestMapper.toRest(domain.getTeamA()))
-                .secondTeam(teamRestMapper.toRest(domain.getTeamB()))
+                .teamA(teamRestMapper.toRest(domain.getTeamA()))
+                .teamB(teamRestMapper.toRest(domain.getTeamB()))
                 .build();
     }
 }

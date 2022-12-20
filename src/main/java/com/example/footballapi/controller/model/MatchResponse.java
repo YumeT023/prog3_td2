@@ -13,6 +13,6 @@ public class MatchResponse {
     private long id;
     private LocalDateTime datetime;
 
-    private TeamResponse firstTeam;
-    private TeamResponse secondTeam;
+    private TeamResponse teamA;
+    private TeamResponse teamB;
 }
