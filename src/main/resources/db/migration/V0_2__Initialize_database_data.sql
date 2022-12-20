@@ -3,7 +3,7 @@ VALUES ('team-1'),
        ('team-2'),
        ('team-3');
 
-INSERT INTO team_play_against (datetime, stadium, team1_id, team2_id)
+INSERT INTO team_play_against (datetime, stadium, team_a_id, team_b_id)
 VALUES ('2022-12-19', 'stadium-1', 1, 2),
        ('2022-12-20', 'stadium-2', 2, 3),
        ('2022-12-20', 'stadium-2', 3, 1);
