@@ -4,6 +4,7 @@ package com.example.footballapi.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,5 +26,6 @@ public class GoalEntity {
     private long id;
 
     @OneToOne
+    @JoinColumn(name = "match_id")
     private MatchEntity match;
 }
