@@ -4,7 +4,6 @@ package com.example.footballapi.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -30,7 +29,7 @@ public class ScoreEntity {
     @Column(nullable = false)
     private int scoringTime;
 
-    @Column(nullable = false)
+    @Column(name = "is_og", nullable = false)
     private boolean isOG;
 
     @ManyToOne
