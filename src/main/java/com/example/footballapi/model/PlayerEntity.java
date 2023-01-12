@@ -25,6 +25,8 @@ public class PlayerEntity {
     @GeneratedValue(strategy = IDENTITY)
     private long id;
 
+    private boolean isGoalKeeper;
+
     @ManyToOne
     @JoinColumn(name = "team_id")
     private TeamEntity team;
