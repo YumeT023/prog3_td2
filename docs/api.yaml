@@ -27,13 +27,23 @@ components:
       allOf:
         - $ref: '#/components/schemas/Record'
       properties:
+        datetime:
+          type: string
+          format: date-time
+        score:
+          $ref: '#/components/schemas/MatchScore'
         teamA:
           $ref: '#/components/schemas/TeamResponse'
         teamB:
           $ref: "#/components/schemas/TeamResponse"
-        datetime:
-          type: string
-          format: date-time
+        goalScorersA:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalResponse'
+        goalScorersB:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalResponse'
     PlayerResponse:
       allOf:
         - $ref: '#/components/schemas/Record'
@@ -67,6 +77,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sponsor'
+    GoalResponse:
+      allOf:
+        - $ref: '#/components/schemas/Record'
+      properties:
+        scoringTime:
+          type: number
+        player:
+          $ref: '#/components/schemas/GoalScorer'
+    GoalScorer:
+      allOf:
+        - $ref: '#/components/schemas/Record'
+      properties:
+        name:
+          type: string
+    MatchScore:
+      type: object
+      properties:
+        teamA:
+          type: number
+        teamB:
+          type: number
     Record:
       type: object
       properties:
