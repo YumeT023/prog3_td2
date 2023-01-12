@@ -1,0 +1,1 @@
+ALTER TABLE player add column is_goal_keep bool default false;
