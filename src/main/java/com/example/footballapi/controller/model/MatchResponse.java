@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 
 @Builder
 @Data
@@ -15,4 +17,9 @@ public class MatchResponse {
 
     private TeamResponse teamA;
     private TeamResponse teamB;
+
+    private List<ScoreResponse> goalScorersA;
+    private List<ScoreResponse> goalScorersB;
+
+    private Map<String, Number> score;
 }
