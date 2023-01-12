@@ -9,15 +9,17 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class TeamRestMapper {
     private final PlayerRestMapper playerRestMapper;
+    private final SponsorRestMapper sponsorRestMapper;
 
     public TeamResponse toRest(TeamEntity domain) {
-        var playerEntity = domain.getPlayers().stream().map(playerRestMapper::toRest).toList();
+        var playerEntities = domain.getPlayers().stream().map(playerRestMapper::toRest).toList();
+        var sponsorEntities = domain.getSponsors().stream().map(sponsorRestMapper::toRest).toList();
 
         return TeamResponse.builder()
                 .id(domain.getId())
                 .name(domain.getName())
-                .sponsors(domain.getSponsors())
-                .players(playerEntity)
+                .sponsors(sponsorEntities)
+                .players(playerEntities)
                 .build();
     }
 }
