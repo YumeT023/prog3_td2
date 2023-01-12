@@ -1,6 +1,5 @@
 package com.example.footballapi.controller.model;
 
-import com.example.footballapi.model.SponsorEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +14,5 @@ public class TeamResponse {
     private String name;
 
     private List<PlayerResponse> players;
-    private List<SponsorEntity> sponsors;
+    private List<SponsorResponse> sponsors;
 }
