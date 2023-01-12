@@ -40,6 +40,8 @@ components:
       properties:
         name:
           type: string
+        isGoalKeeper:
+          type: boolean
     Sponsor:
       allOf:
         - $ref: '#/components/schemas/Record'
