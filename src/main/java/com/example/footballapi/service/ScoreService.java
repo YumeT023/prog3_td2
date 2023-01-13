@@ -12,7 +12,20 @@ import java.util.List;
 public class ScoreService {
     private final ScoreRepository repository;
 
-    public List<ScoreEntity> getGoalScorers(long goalId) {
+    public List<ScoreEntity> getGoalScorersByTeamId(long goalId, long teamId) {
+        return this.getGoalScorersByGoalId(goalId).stream().filter(
+                scorer -> {
+                    var $teamId = scorer.getPlayer().getTeam().getId();
+
+                    if ($teamId == teamId) {
+                        return !scorer.isOG();
+                    }
+                    return scorer.isOG();
+                }
+        ).toList();
+    }
+
+    public List<ScoreEntity> getGoalScorersByGoalId(long goalId) {
         return repository.findAllByGoalId(goalId);
     }
 }

@@ -19,8 +19,7 @@ public class PlayedTeamRestMapper {
         var players = domain.getPlayers().stream().map(playerRestMapper::toRest).toList();
         var sponsors = domain.getSponsors().stream().map(sponsorRestMapper::toRest).toList();
 
-        var scorers = scoreService.getGoalScorers(goalId)
-                .stream().filter(scorer -> scorer.getPlayer().getTeam().getId() == domain.getId()).toList();
+        var scorers = scoreService.getGoalScorersByTeamId(goalId, domain.getId());
 
         return PlayedTeamResponse.builder()
                 .id(domain.getId())
@@ -30,6 +29,5 @@ public class PlayedTeamRestMapper {
                 .scorers(scorers.stream().map(scoreRestMapper::toRest).toList())
                 .goals(scorers.size())
                 .build();
-
     }
 }
