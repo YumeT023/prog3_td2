@@ -13,9 +13,9 @@ public class ScoreRestMapper {
     public ScoreResponse toRest(ScoreEntity domain) {
         return ScoreResponse.builder()
                 .id(domain.getId())
-                .scoringTime(domain.getScoringTime())
+                .scoreTime(domain.getScoringTime())
                 .isOG(domain.isOG())
-                .player(playerRestMapper.toScoreRest(domain.getPlayer()))
+                .player(playerRestMapper.toRest(domain.getPlayer()))
                 .build();
     }
 }

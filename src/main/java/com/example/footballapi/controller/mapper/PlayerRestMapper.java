@@ -1,7 +1,6 @@
 package com.example.footballapi.controller.mapper;
 
 import com.example.footballapi.controller.model.PlayerResponse;
-import com.example.footballapi.controller.model.ScorePlayerResponse;
 import com.example.footballapi.model.PlayerEntity;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +11,6 @@ public class PlayerRestMapper {
                 .id(domain.getId())
                 .name(domain.getName())
                 .isGoalKeeper(domain.isGoalKeeper())
-                .build();
-    }
-
-    public ScorePlayerResponse toScoreRest(PlayerEntity domain) {
-        return ScorePlayerResponse.builder()
-                .id(domain.getId())
-                .name(domain.getName())
                 .build();
     }
 }

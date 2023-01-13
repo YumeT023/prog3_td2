@@ -15,43 +15,17 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class MatchRestMapper {
-    private final TeamRestMapper teamRestMapper;
-    private final ScoreService scoreService;
+    private final PlayedTeamRestMapper playedTeamRestMapper;
     private final GoalService goalService;
-    private final ScoreRestMapper scoreRestMapper;
 
     public MatchResponse toRest(MatchEntity domain) {
-        var teamA = teamRestMapper.toRest(domain.getTeamA());
-        var teamB = teamRestMapper.toRest(domain.getTeamB());
-
-        var goalEntity = goalService.getByMatchId(domain.getId());
-        var goalScorers = scoreService.getGoalScorers(goalEntity.getId());
-
-        List<ScoreResponse> goalScorerTeamA = new ArrayList<>();
-        List<ScoreResponse> goalScorerTeamB = new ArrayList<>();
-
-        goalScorers.forEach(goalScorer -> {
-            var teamId = goalScorer.getPlayer().getTeam().getId();
-            var scoreResponse = scoreRestMapper.toRest(goalScorer);
-            if (teamId == teamA.getId()) {
-                goalScorerTeamA.add(scoreResponse);
-            } else {
-                goalScorerTeamB.add(scoreResponse);
-            }
-        });
-
-        var score = new HashMap<String, Number>();
-        score.put("teamA", goalScorerTeamA.size());
-        score.put("teamB", goalScorerTeamB.size());
+        var goal = goalService.getByMatchId(domain.getId());
 
         return MatchResponse.builder()
                 .id(domain.getId())
                 .datetime(domain.getDatetime())
-                .score(score)
-                .teamA(teamA)
-                .teamB(teamB)
-                .goalScorersA(goalScorerTeamA)
-                .goalScorersB(goalScorerTeamB)
+                .teamHome(playedTeamRestMapper.toRest(domain.getTeamA(), goal.getId()))
+                .teamAway(playedTeamRestMapper.toRest(domain.getTeamB(), goal.getId()))
                 .build();
     }
 }

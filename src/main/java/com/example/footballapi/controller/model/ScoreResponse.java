@@ -9,7 +9,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ScoreResponse {
     private long id;
-    private ScorePlayerResponse player;
-    private int scoringTime;
+    private PlayerResponse player;
+    private int scoreTime;
     private boolean isOG;
 }
