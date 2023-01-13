@@ -8,10 +8,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -27,6 +29,7 @@ public class ScoreEntity {
     private long id;
 
     @Column(nullable = false)
+    @Length(min = 0, max = 90)
     private int scoringTime;
 
     @Column(name = "is_og", nullable = false)
