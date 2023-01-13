@@ -10,6 +10,7 @@ public class PlayerRestMapper {
         return PlayerResponse.builder()
                 .id(domain.getId())
                 .name(domain.getName())
+                .isGoalKeeper(domain.isGoalKeeper())
                 .build();
     }
 }

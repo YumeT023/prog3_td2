@@ -1,20 +1,22 @@
 package com.example.footballapi.controller.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 @Builder
 @Data
 @AllArgsConstructor
-public class MatchResponse {
+public class PlayedTeamResponse {
     private long id;
-    private LocalDateTime datetime;
+    private String name;
 
-    private PlayedTeamResponse teamHome;
-    private PlayedTeamResponse teamAway;
+    private List<PlayerResponse> players;
+    private List<SponsorResponse> sponsors;
+
+    private int goals;
+    private List<ScoreResponse> scorers;
 }

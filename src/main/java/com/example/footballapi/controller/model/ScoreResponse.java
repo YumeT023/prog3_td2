@@ -4,15 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
-
 @Builder
 @Data
 @AllArgsConstructor
-public class TeamResponse {
+public class ScoreResponse {
     private long id;
-    private String name;
-
-    private List<PlayerResponse> players;
-    private List<SponsorResponse> sponsors;
+    private PlayerResponse player;
+    private int scoreTime;
+    private boolean isOG;
 }

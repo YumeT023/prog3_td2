@@ -10,4 +10,5 @@ import lombok.Data;
 public class PlayerResponse {
     private long id;
     private String name;
+    private boolean isGoalKeeper;
 }
